@@ -1,34 +1,13 @@
-import { getAllProjects, getOffersForProduct, getProductsForProject } from "@/lib/queries";
+// app/page.tsx  (placeholder until step 5)
+// A page uses <section> or <div> now, because layout.tsx already provides <main>.
 
-export default function HomePage (){
-    const projects = getAllProjects();
-
-    return (
-        <main className="p-8">
-            <h1 className="text-2xl font-semibold">Data Check</h1>
-            {/*Loop over every project and print its title*/}
-            {projects.map((project) => (
-                <section key={project.id} className="mt-6">
-                    <h2 className="text-xl">{project.title}</h2>
-                    <ul className="ml-5 list-disc">
-                        {/*For each project,loop over its tagged products */}
-                        {getProductsForProject(project).map((product) => {
-                            const offers = getOffersForProduct(product.id);
-                            return(
-                                <li key = {product.id}>
-                                    {product.name}: from KES {offers[0]?.priceKes} ({offers.length} sellers)
-                                </li>
-                            );
-
-                        })}
-                    </ul>
-                </section>
-            ))}
-
-
-        </main>
-     
-     
-
-    );
+export default function HomePage() {
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-24 text-center">
+      <h1 className="font-heading text-4xl font-semibold text-leaf-700">
+        Landscape ideas you can build
+      </h1>
+      <p className="mt-4 text-leaf-900/70">We proceed.</p>
+    </section>
+  );
 }

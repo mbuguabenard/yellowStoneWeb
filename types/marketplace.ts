@@ -22,7 +22,7 @@ export interface Product {
     category: ProductCategory;
     description: string;
     imageColor: string;
-    plantDetails: {
+    plantDetails?: {
         sun: SunNeed;
         water: WaterNeed;
         matureHeight: string;
