@@ -2,6 +2,9 @@ import Link from "next/link";
 import type { Product } from "@/types/marketplace";
 import { getLowestPrice, getOffersForProduct } from "@/lib/queries";
 import { formatKes, humanise } from "@/lib/format";
+import ImagePlaceholder from "./ImagePlaceholder";
+import { imageSlots } from "@/lib/imageSlots";
+
 
 export default function ProductCard({ product}: {product: Product}) {
     const lowestPrice = getLowestPrice(product.id);
@@ -12,7 +15,8 @@ export default function ProductCard({ product}: {product: Product}) {
         href={`/products/${product.slug}`}
         className="group block overflow-hidden rounded-2xl border border-sand-200 bg-white transition hover:shadow-md "
         >
-            <div className="aspect-square" style={{ backgroundColor: product.imageColor }} aria-hidden="true" />
+            {/*<div className="aspect-square" style={{ backgroundColor: product.imageColor }} aria-hidden="true" /> */}
+            <ImagePlaceholder color={product.imageColor} slot={imageSlots.productCard} />
             <div className="p-4">
                 <p className="text-xs font-medium text-clay-600">{humanise(product.category)}</p>
                 <h3 className="mt-1 font-medium group-hover:text-leaf-700">{product.name}</h3>

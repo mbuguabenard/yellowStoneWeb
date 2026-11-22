@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Project } from "@/types/marketplace";
 import { getProfessionalById } from "@/lib/queries";
 import { humanise } from "@/lib/format";
+import ImagePlaceholder from "./ImagePlaceholder";
+import { imageSlots } from "@/lib/imageSlots";
 
 export default function ProjectCard({ project }: { project:Project }) {
     const professional = getProfessionalById(project.professionalId);
@@ -11,7 +13,7 @@ export default function ProjectCard({ project }: { project:Project }) {
           href={`/projects/${project.slug}` }
           className="group block overflow-hidden rounded-2xl border border-sand-200 bg-white transition hover:shadow-md"
         >
-            <div className="aspect-[4/3]" style={{ background: project.imageColor }} aria-hidden="true" />
+            <ImagePlaceholder color={project.imageColor} slot={imageSlots.projectCard} />
             <div className="p-5">
                 <p className="text-xs font-medium text-clay-600">
                     {humanise(project.style)} · {humanise(project.spaceType)} 
